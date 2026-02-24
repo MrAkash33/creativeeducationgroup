@@ -1,73 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Website Under Development</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            font-family: Arial, sans-serif;
-            color: white;
-            text-align: center;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Education Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
 
-        .container {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-        h1 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
+body{
+    background:#f5f7fa;
+    color:#333;
+}
 
-        p {
-            font-size: 18px;
-            opacity: 0.9;
-        }
+a{
+    text-decoration:none;
+    color:inherit;
+}
 
-        .loader {
-            margin: 20px auto;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid white;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
+/* NAVBAR */
 
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 8%;
+    background:#fff;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
 
-        .footer {
-            margin-top: 20px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-    </style>
+.logo{
+    font-size:20px;
+    font-weight:700;
+    color:#0099cc;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#0099cc;
+}
+
+.menu-toggle{
+    display:none;
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:60px 8%;
+    background:linear-gradient(to right,#dff6ff,#f0fbff);
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    flex:1;
+    min-width:280px;
+}
+
+.hero-text h1{
+    font-size:48px;
+    color:#00a3d6;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.hero-buttons button{
+    padding:10px 25px;
+    border:none;
+    margin-right:15px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:500;
+}
+
+.btn-primary{
+    background:#00a3d6;
+    color:#fff;
+}
+
+.btn-secondary{
+    background:#fff;
+    border:1px solid #ccc;
+}
+
+.hero img{
+    width:400px;
+    max-width:100%;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    padding:60px 8%;
+}
+
+.card{
+    background:#fff;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    color:#004aad;
+    margin-bottom:15px;
+}
+
+/* SEARCH SECTION */
+
+.search-section{
+    background:#cceffc;
+    padding:40px 8%;
+    text-align:center;
+}
+
+.search-section h2{
+    margin-bottom:30px;
+}
+
+.search-box{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.search-box select,
+.search-box input{
+    padding:12px;
+    border:none;
+    border-radius:6px;
+}
+
+.search-box button{
+    padding:12px;
+    background:#00a3d6;
+    border:none;
+    color:#fff;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:30px;
+    padding:60px 8%;
+    text-align:center;
+}
+
+.stat-box{
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.stat-box h2{
+    color:#00a3d6;
+    font-size:32px;
+}
+
+/* ABOUT */
+
+.about{
+    display:flex;
+    flex-wrap:wrap;
+    padding:60px 8%;
+    align-items:center;
+    gap:40px;
+}
+
+.about img{
+    width:400px;
+    max-width:100%;
+}
+
+.about-text{
+    flex:1;
+}
+
+.about-text h2{
+    color:#00a3d6;
+    margin-bottom:20px;
+}
+
+/* SERVICES */
+
+.services{
+    padding:60px 8%;
+    text-align:center;
+}
+
+.service-grid{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:25px;
+}
+
+.service-box{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* BLOG BANNER */
+
+.blog-banner{
+    background:#bfe9f9;
+    padding:30px;
+    text-align:center;
+    font-size:24px;
+    font-weight:600;
+}
+
+/* CONTACT */
+
+.contact{
+    padding:60px 8%;
+    display:flex;
+    flex-wrap:wrap;
+    gap:40px;
+    align-items:center;
+}
+
+.contact form{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.contact input,
+.contact textarea{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.contact button{
+    padding:12px;
+    background:#00a3d6;
+    color:#fff;
+    border:none;
+    border-radius:6px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#0077a6;
+    color:#fff;
+    padding:40px 8%;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:30px;
+}
+
+footer h4{
+    margin-bottom:15px;
+}
+
+/* RESPONSIVE NAV */
+
+@media(max-width:768px){
+    .nav-links{
+        display:none;
+        flex-direction:column;
+        background:#fff;
+        position:absolute;
+        top:60px;
+        right:8%;
+        padding:20px;
+        box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .hero-text h1{
+        font-size:32px;
+    }
+}
+
+</style>
 </head>
-
 <body>
-    <div class="container">
-        <h2>Creative Education Group</h2>
-        <h1>🚧 Website Under Development</h1>
-        <div class="loader"></div>
-        <p>We're working hard to launch our website.</p>
-        <p>Please check back soon!</p>
-        <div class="footer">
-            © 2026 creativeeducationgroup.in
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">Creative Education Group</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Gallery</a>
+        <a href="#">Courses</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Your Education<br>Your Future</h1>
+        <p>Explore a diverse array of colleges and universities across the globe, unlocking boundless opportunities for your academic journey.</p>
+        <div class="hero-buttons">
+            <button class="btn-secondary">Login</button>
+            <button class="btn-primary">Contact Now</button>
         </div>
     </div>
+    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="">
+</section>
+
+<!-- STUDY CARDS -->
+<section class="cards">
+    <div class="card">
+        <h3>Study In India</h3>
+        <p>Embark on a healing journey. Study Medicine in India and experience top institutions and global excellence.</p>
+    </div>
+    <div class="card">
+        <h3>Study Abroad</h3>
+        <p>Study medicine abroad and immerse yourself in world-class education and international medical institutions.</p>
+    </div>
+</section>
+
+<!-- SEARCH -->
+<section class="search-section">
+    <h2>Better Education For A Better World</h2>
+    <div class="search-box">
+        <select><option>Looking For</option></select>
+        <select><option>Course Type</option></select>
+        <select><option>Course Name</option></select>
+        <button>Submit</button>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="stat-box">
+        <h2>859+</h2>
+        <p>Global University Tie Ups</p>
+    </div>
+    <div class="stat-box">
+        <h2>2940+</h2>
+        <p>Students Placed</p>
+    </div>
+    <div class="stat-box">
+        <h2>15+</h2>
+        <p>Years Of Industry Presence</p>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="">
+    <div class="about-text">
+        <h2>About Creative Education Group</h2>
+        <p>We empower students to find their perfect college match with accurate information and personalized guidance.</p>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+        <div class="service-box">College Predictor</div>
+        <div class="service-box">Expert Counseling</div>
+        <div class="service-box">College Level Analysis</div>
+        <div class="service-box">Transparent Process</div>
+        <div class="service-box">Personalized Guidance</div>
+        <div class="service-box">Alerts & Notification</div>
+    </div>
+</section>
+
+<div class="blog-banner">Blogs</div>
+
+<!-- CONTACT -->
+<section class="contact">
+    <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28" width="400">
+    <form>
+        <h2>Request a Callback</h2>
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email">
+        <input type="text" placeholder="Mobile">
+        <input type="text" placeholder="Course Interested In">
+        <textarea rows="4" placeholder="Description"></textarea>
+        <button>Submit</button>
+    </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h4>Top Courses</h4>
+            <p>MBBS in India</p>
+            <p>MBBS Abroad</p>
+            <p>B.Tech</p>
+        </div>
+        <div>
+            <h4>Legal</h4>
+            <p>About Us</p>
+            <p>Privacy Policy</p>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <p>Noida, India</p>
+            <p>+91 9988661558</p>
+            <p>support@admissionpossibility.com</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
+
 </body>
 </html>
