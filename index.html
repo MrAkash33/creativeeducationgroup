@@ -1065,7 +1065,9 @@ a{
                     skills with modern laboratories and expert faculty. Prepare yourself for 
                     successful careers in technology, research, and global industries.
                 </p>
-                <a id="openModal" class="card-btn">Explore colleges →</a>
+                <a class="card-btn openModalBtn" data-type="btech">
+                    Explore colleges →
+                </a>
             </div>
 
             <div class="card-image">
@@ -1074,15 +1076,13 @@ a{
         </div>
     </div>
 
-    <div id="collegeModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Available Colleges</h2>
-    
-            <ul id="collegeList"></ul>
-    
-        </div>
+ <div id="collegeModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle">Available Colleges</h2>
+        <ul id="collegeList"></ul>
     </div>
+</div>
 
 
 
@@ -1099,7 +1099,9 @@ a{
                     managerial skills, and real-world business expertise through practical 
                     learning, internships, and corporate exposure designed for future leaders.
                 </p>
-                <a href="#" class="card-btn">Explore college →</a>
+                <a class="card-btn openModalBtn" data-type="pgdm">
+                    Explore colleges →
+                </a>
             </div>
 
             <div class="card-image">
@@ -1350,63 +1352,124 @@ a{
 
 <script>
 
-const colleges = [
-"MAIT",
-"MSIT",
-"BPIT",
-"Dr. Akhilesh Das",
-"VIPS",
-"Guru Teg Bahadur",
-"Bhartiya Vidhya Peeth",
-"Bennett University",
-"Sharda University",
-"Amity University",
-"Noida International University",
-"Galgotias University",
-"J.S.S. University",
-"ABES",
-"AKGEC (AKGIT)",
-"KIET (KITE)",
-"IMS GHAZIABAD",
-"JIIT NOIDA",
-"G.L. Bajaj – GR. NOIDA",
-"GNIOT – GR. NOIDA",
-"NIET – GR. NOIDA",
-"AKCC INSTITUTE",
-"LLOYD – GR. NOIDA",
-"ITS – GR. NOIDA",
-"Dhronacharya – GR. NOIDA"
-];
+const collegeData = {
+
+    btech: [
+        "MAIT",
+        "MSIT",
+        "BPIT",
+        "Dr. Akhilesh Das",
+        "VIPS",
+        "Guru Teg Bahadur",
+        "Bhartiya Vidhya Peeth",
+        "Bennett University",
+        "Sharda University",
+        "Amity University",
+        "Noida International University",
+        "Galgotias University",
+        "J.S.S. University",
+        "ABES",
+        "AKGEC (AKGIT)",
+        "KIET (KITE)",
+        "IMS GHAZIABAD",
+        "JIIT NOIDA",
+        "G.L. Bajaj – GR. NOIDA",
+        "GNIOT – GR. NOIDA",
+        "NIET – GR. NOIDA",
+        "AKCC INSTITUTE",
+        "LLOYD – GR. NOIDA",
+        "ITS – GR. NOIDA",
+        "Dhronacharya – GR. NOIDA"
+    ],
+
+    pgdm: [
+        "IMI — Delhi",
+        "FORE — Delhi",
+        "IMT — Ghaziabad, Nagpur, Hyderabad",
+        "Goa Institute of Management — Goa",
+        "SOIL — Gurgaon",
+        "BIMTECH — Greater Noida",
+        "Great Lakes — Gurgaon, Chennai",
+        "LBSIM — Delhi",
+        "FOSTIIMA",
+        "Jaipuria — Noida",
+        "IILM — Delhi, Noida, Gurgaon",
+        "IMM — Delhi",
+        "G.L. Bajaj — Greater Noida",
+        "Technia — Rohini Delhi",
+        "NDIM — Delhi",
+        "GNIOT",
+        "Lloyd — Noida",
+        "Bennett University",
+        "IBI — Greater Noida",
+        "NIET — Greater Noida",
+        "Amity Business School",
+        "ITS — Ghaziabad",
+        "IMS Ghaziabad",
+        "Lexicon MILE — Pune",
+        "PIBM — Pune",
+        "RIIM — Pune",
+        "DY Patil — Pune",
+        "Atlas University — Mumbai",
+        "SP Jain — Mumbai",
+        "Jamunalal — Mumbai",
+        "Simsree — Mumbai",
+        "UBS — Mumbai",
+        "NMIMS — Mumbai (NMAT)",
+        "Symbiosis — Pune",
+        "J.S. Kothari — Mumbai",
+        "IBMR — Bangalore",
+        "IIBS — Bangalore",
+        "Alliance University — Bangalore",
+        "Christ University — Bangalore",
+        "R.C.M. — Bangalore",
+        "JIMS — Kalkaji, Rohini",
+        "Fortune — New Delhi",
+        "IBMR — Gurgaon"
+    ]
+};
+
+
+/* ================= MODAL LOGIC ================= */
 
 const collegeModal = document.getElementById("collegeModal");
-const list = document.getElementById("collegeList");
+const collegeList = document.getElementById("collegeList");
+const modalTitle = document.getElementById("modalTitle");
 
-// PRINT LIST
-function loadColleges(){
-    list.innerHTML = "";
-    colleges.forEach(college=>{
-        const li = document.createElement("li");
-        li.textContent = college;
-        list.appendChild(li);
+// OPEN BUTTONS
+document.querySelectorAll(".openModalBtn").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        const type = btn.dataset.type;
+        const colleges = collegeData[type];
+
+        collegeList.innerHTML = "";
+
+        colleges.forEach(college => {
+            const li = document.createElement("li");
+            li.textContent = college;
+            collegeList.appendChild(li);
+        });
+
+        modalTitle.textContent =
+            type === "btech" ? "B-TECH Colleges" : "PGDM Colleges";
+
+        collegeModal.style.display = "block";
     });
-}
 
-// OPEN MODAL
-document.getElementById("openModal").onclick = ()=>{
-    loadColleges();
-    collegeModal.style.display="block";
-};
-
-// CLOSE MODAL
-document.querySelector("#collegeModal .close").onclick = ()=>{
-    collegeModal.style.display="none";
-};
-
-window.addEventListener("click",(e)=>{
-    if(e.target === collegeModal){
-        collegeModal.style.display="none";
-    }
 });
+
+// CLOSE
+document.querySelector("#collegeModal .close").onclick = () => {
+    collegeModal.style.display = "none";
+};
+
+window.onclick = (e) => {
+    if (e.target === collegeModal) {
+        collegeModal.style.display = "none";
+    }
+};
 function toggleMenu(){
     document.getElementById("navLinks").classList.toggle("active");
 }
