@@ -1377,7 +1377,7 @@ const colleges = [
 "Dhronacharya – GR. NOIDA"
 ];
 
-const modal = document.getElementById("collegeModal");
+const collegeModal = document.getElementById("collegeModal");
 const list = document.getElementById("collegeList");
 
 // PRINT LIST
@@ -1393,19 +1393,19 @@ function loadColleges(){
 // OPEN MODAL
 document.getElementById("openModal").onclick = ()=>{
     loadColleges();
-    modal.style.display="block";
+    collegeModal.style.display="block";
 };
 
 // CLOSE MODAL
-document.querySelector(".close").onclick = ()=>{
-    modal.style.display="none";
+document.querySelector("#collegeModal .close").onclick = ()=>{
+    collegeModal.style.display="none";
 };
 
-window.onclick = (e)=>{
-    if(e.target === modal){
-        modal.style.display="none";
+window.addEventListener("click",(e)=>{
+    if(e.target === collegeModal){
+        collegeModal.style.display="none";
     }
-};
+});
 function toggleMenu(){
     document.getElementById("navLinks").classList.toggle("active");
 }
